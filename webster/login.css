@@ -1,0 +1,42 @@
+.container-fluid
+{
+   
+    background-image: url(./images/login_background.jpg);
+   
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.middle-container
+{
+    border: 0.3rem solid black;
+    border-radius: 1rem;
+    padding: 3rem;
+   
+}
+.lead
+{
+    color: white;
+    font-weight:bolder !important;
+}
+.whole_container
+{
+    height:110vh;
+}
+
+  
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
