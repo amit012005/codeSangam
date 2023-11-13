@@ -1,0 +1,13 @@
+body{
+    background-color:aliceblue!important;
+}
+.about-container
+{
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-bottom: 3rem;
+    background-color: aquamarine;
+    padding: 5rem;
+    border-radius: 1rem;
+    
+}

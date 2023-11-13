@@ -1,0 +1,22 @@
+.navbar-list
+{
+    display: flex;
+    justify-content: center;
+    
+    width: 100%;
+
+}
+
+.navbar-list .nav-item {
+    margin: 0 10px; /* Add some horizontal spacing between items if desired */
+  }
+
+  .sign .btn
+  {
+    width: 6rem;
+  }
+  .navbar-brand
+  {
+    color:darkgrey !important;
+  }
+
