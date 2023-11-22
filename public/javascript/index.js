@@ -1,47 +1,39 @@
-    //    javascript for signinButton
 
-const signinButton = document.querySelector(".signinbutton");
 
-if (signinButton) {
-    signinButton.addEventListener("click", function() {
-        
-        window.location.href = "login.html";
-    });
-}
+    // const nav_bar_toggler = document.querySelector(".navbar-toggler");
 
-//  javascript for signupBUtton
+    // // if (nav_bar_toggler) {
+    // //     nav_bar_toggler.addEventListener("click", function () {
+    // //         document.querySelector(".middle_background").style.backgroundColor = "blue";
+    // //     });
+    // // }
+    
 
-const signUpButton=document.querySelector(".signupbutton")
 
-    if(signUpButton)
-    {
-        signUpButton.addEventListener("click",function()
-        {
-            window.location.href="register.html";
-        });
-    }
 
     
-  // javascript for create account button
-
-    const create_act_button=document.querySelector(".creat_act");
-
-    if(create_act_button)
-    {
-        create_act_button.addEventListener("click",function()
-        {
-            window.location.href="register.html";
-        });
+    function toggleDropdown(dropdownId) {
+      const dropdown = document.getElementById(dropdownId);
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
     }
 
-
-    // javascript for nav_bar toggler
-
-    const nav_bar_toggler = document.querySelector(".navbar-toggler");
-
-    if (nav_bar_toggler) {
-        nav_bar_toggler.addEventListener("click", function () {
-            document.querySelector(".middle_background").style.backgroundColor = "blue";
-        });
+    function selectRole(role, action) {
+      alert('Selected Role: ' + role + ' for ' + action);
+      // Handle the selected role (e.g., redirect to the appropriate login or signup page)
     }
-    
+
+    window.onclick = function(event) {
+      if (!event.target.matches('.login-dropdown button')) {
+        const loginDropdown = document.getElementById('loginDropdown');
+        if (loginDropdown.style.display === 'block') {
+          loginDropdown.style.display = 'none';
+        }
+      }
+
+      if (!event.target.matches('.signup-dropdown button')) {
+        const signupDropdown = document.getElementById('signupDropdown');
+        if (signupDropdown.style.display === 'block') {
+          signupDropdown.style.display = 'none';
+        }
+      }
+    }

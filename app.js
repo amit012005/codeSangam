@@ -3,6 +3,7 @@ const path=require("path");
 require("./src/db/connect");
 const bodyparser=require("body-parser");
 const mongoose=require("mongoose");
+
 // const Register = require("./src/models/registers");
 
 
@@ -70,13 +71,22 @@ app.get("/",(req,res)=>{
     res.render("home.ejs");
 })
 
-app.get("/login",(req,res)=>{
-    res.render("login.ejs");
+app.get("/userLogin",(req,res)=>{
+    res.render("userLogin.ejs");
+})
+app.get("/adminLogin",(req,res)=>{
+    res.render("adminLogin.ejs");
+})
+app.get("/userSignup",(req,res)=>{
+    res.render("userRegister.ejs");
+})
+app.get("/adminSignup",(req,res)=>{
+    res.render("adminRegister.ejs");
 })
 
-app.get("/register",(req,res)=>{
-    res.render("register.ejs");
-})
+// app.get("/register",(req,res)=>{
+//     res.render("register.ejs");
+// })
 app.get("/aboutus",(req,res)=>{
     res.render("aboutus.ejs");
 })
@@ -151,6 +161,9 @@ app.post("/login",async(req,res)=>{
 //         }
 //     });
 // });
+
+
+
 
 
 

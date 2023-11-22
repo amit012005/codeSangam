@@ -1,0 +1,86 @@
+<!-- views/admin-dashboard.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/styles/admin-dashboard.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome, Admin!</h1>
+
+    <!-- Quiz creation form with dynamic questions -->
+    <form action="/admin/create-quiz" method="post">
+      <label for="quizTitle">Quiz Title:</label>
+      <input type="text" id="quizTitle" name="quizTitle" required>
+
+      <div id="questionsContainer">
+        <div class="question">
+          <label for="question">Question:</label>
+          <textarea name="questions[]" required></textarea>
+
+          <label for="quizType">Question Type:</label>
+          <select name="questionTypes[]" required>
+            <option value="mcq">Multiple Choice Question (MCQ)</option>
+            <option value="tf">True/False</option>
+            <option value="shortAnswer">Short Answer</option>
+          </select>
+
+          <div class="optionsContainer" style="display: none;">
+            <label for="options">Options (comma-separated for MCQ):</label>
+            <input type="text" name="options[]" class="options">
+          </div>
+        </div>
+      </div>
+
+      <button type="button" id="addQuestion">Add Question</button>
+      <button type="submit">Create Quiz</button>
+    </form>
+  </div>
+
+  <script src="/scripts/admin-dashboard.js"></script>
+</body>
+</html>
+<!-- views/admin-dashboard.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="css/admin-dashboard.css">
+  
+</head>
+<body>
+  <div class="admin-dashboard">
+    <h1>Admin Dashboard</h1>
+
+    <div class="quiz-form">
+      <label for="quizTitle">Quiz Title:</label>
+      <input type="text" id="quizTitle" placeholder="Enter quiz title">
+
+      <label for="quizType">Quiz Type:</label>
+      <select id="quizType">
+        <option value="mcq">Multiple Choice Question</option>
+        <option value="trueFalse">True/False Question</option>
+        <option value="shortAnswer">Short Answer Question</option>
+      </select>
+
+      <label for="numQuestions">Number of Questions:</label>
+      <input type="number" id="numQuestions" placeholder="Enter number of questions">
+
+      <button class="btn btn-primary" onclick="generateQuestionInputs()">Generate Questions</button>
+
+      <div id="questionInputs" class="question-inputs">
+        <!-- Question inputs will be dynamically added here -->
+      </div>
+
+      <button id="submitBtn" class="btn btn-primary" onclick="submitQuestions()" style="display: none;">Submit Questions</button>
+    </div>
+  </div>
+
+ <script src="javascript/admin-dashboard.js"></script>
+</body>  
+</html>
