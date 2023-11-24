@@ -32,20 +32,20 @@
                   <b>Categories</b>
                 </a>
                 <ul class="dropdown-menu"> 
-                  <li><a class="dropdown-item" href="#">GeneralKnowledge</a></li>
-                  <li><a class="dropdown-item" href="#">Logical Regioning</a></li>
-                  <li><a class="dropdown-item" href="#">Entertainment</a></li>
-                  <li><a class="dropdown-item" href="#">Programming</a></li>
-                  <li><a class="dropdown-item" href="#">Mathematics</a></li>
-                  <li><a class="dropdown-item" href="#">Language</a></li>
-                  <li><a class="dropdown-item" href="#">Science</a></li>
-                  <li><a class="dropdown-item" href="#">Sports</a></li>
+                  <li><a class="dropdown-item" href="/userLogin">GeneralKnowledge</a></li>
+                  <li><a class="dropdown-item" href="/userLogin">Logical Regioning</a></li>
+                  <li><a class="dropdown-item" href="/userLogin">Entertainment</a></li>
+                  <li><a class="dropdown-item" href="/userLogin">Programming</a></li>
+                  <li><a class="dropdown-item" href="/userLogin">Mathematics</a></li>
+                  <li><a class="dropdown-item" href="/userLogin">Language</a></li>
+                  <li><a class="dropdown-item" href="/userLogin">Science</a></li>
+                  <li><a class="dropdown-item" href="/userLogin">Sports</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Try Something New</a></li>
+                  <li><a class="dropdown-item" href="/userLogin">Try Something New</a></li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><b>Contact Us</b></a>
+                <a class="nav-link" href="#" onclick="scrollToFooter()" ><b>Contact Us</b></a>       
               </li>
               
               <li class="nav-item">
@@ -90,7 +90,7 @@
             <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3 mid_text">Discover Quiz Adventures with Our Platform</h1>
             <p class="lead">Cultivate your intellect with our diverse collection of quizzes. Explore topics from history to pop culture while enjoying an engaging and educational experience. Challenge your knowledge on our platform today.</p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-              <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 creat_act"><a href="/register" style="text-decoration: none;">Create Account</a></button>
+              <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 creat_act"><a href="/userSignup" style="text-decoration: none;">Create Account</a></button>
               <button type="button" class="btn btn-outline-secondary btn-lg px-4">Demo Quiz</button>
             </div>
           </div>
@@ -102,10 +102,6 @@
 
 
         <!-- different cards for different topics -->
-
-
-
-
 
       <div class="background_img  cards">
 
@@ -196,7 +192,7 @@
 
   <!-- html for footer -->
 
-  <div class="footer-container">
+  <div class="footer-container" id="footer">
     <footer class="row row-cols-5 py-5 my-5 border-top">
       <div class="col">
         <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">

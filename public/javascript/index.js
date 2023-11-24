@@ -37,3 +37,15 @@
         }
       }
     }
+
+
+    function scrollToFooter() {
+      // Get the position of the footer
+      const footerPosition = document.getElementById('footer').offsetTop;
+  
+      // Scroll to the footer smoothly
+      window.scrollTo({
+        top: footerPosition,
+        behavior: 'smooth'
+      });
+    }

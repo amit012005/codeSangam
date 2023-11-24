@@ -4,32 +4,14 @@ require("./src/db/connect");
 const bodyparser=require("body-parser");
 const mongoose=require("mongoose");
 
-// const Register = require("./src/models/registers");
-
-
-const Question = require('./src/models/question');
-
-// const { log } = require("console");
-//const static_path=path.join(__dirname,"../views");
-
 
 const app=express();
 const port=process.env.port ||3000; //if we host then port will be generated automatically
 
 app.use(express.static("public"));
-// app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(bodyparser.urlencoded({extended:true}));
 
-
-
-
-// mongoose.connect("mongodb://localhost:27017/students",{
-//     useNewUrlParser: true
-// }).then(()=>{
-//     console.log("connection successful")
-// }).catch((e)=>{
-//     console.log(`no connection`);
-// });
 
 const studentSchema=new mongoose.Schema({
     username :{
@@ -52,6 +34,7 @@ const studentSchema=new mongoose.Schema({
     }
 });
 
+
 //creating collection,defining model ,class
 
 const Register=new mongoose.model("Register",studentSchema);
@@ -65,6 +48,139 @@ const Register=new mongoose.model("Register",studentSchema);
 // module.export=Register;
 
 
+
+const adminSchema=new mongoose.Schema({
+    username :{
+        type:String,
+        required:true,
+        unique:true
+    },
+    email :{
+        type:String,
+        required:true,
+        unique:true
+    },
+    password :{
+        type:String,
+        required:true
+    },
+    confirmpassword :{
+         type:String,
+         required:true
+    }
+});
+
+const Admin=new mongoose.model("Admin",studentSchema);
+
+
+
+
+
+
+// Define the schema for Multiple Choice Questions
+const mcqSchema = new mongoose.Schema({
+  question: {
+    type: String,
+    required: true,
+  },
+  options: {
+    type: [String],  // Assuming options are strings
+    required: true,
+  },
+  correctAnswer: {  // Renamed from correctOption to be consistent with the front-end
+    type: String,
+    required: true,
+  },
+});
+
+// Define the schema for True/False Questions
+const trueFalseSchema = new mongoose.Schema({
+  question: {
+    type: String,
+    required: true,
+  },
+  isTrue: {
+    type: Boolean,
+    required: true,
+  },
+});
+
+// Define the schema for Short Answer Questions
+const shortAnswerSchema = new mongoose.Schema({
+  question: {
+    type: String,
+    required: true,
+  },
+});
+
+// Define the main schema for all types of questions
+const questionSchema = new mongoose.Schema({
+  quizTitle: {
+    type: String,
+    required: true,
+  },
+  quizType: {
+    type: String,
+    enum: ['mcq', 'trueFalse', 'shortAnswer'],
+    required: true,
+  },
+  numQuestions: {
+    type: Number,
+    required: true,
+  },
+  questions: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      refPath: 'quizType', // Dynamic reference based on the quizType field
+    },
+  ],
+  // New fields added to the main schema
+  options: {
+    type: [[String]],  // Assuming options for all questions (2D array)
+    required: true,
+  },
+  correctAnswers: {
+    type: [String],
+    required: true,
+  },
+});
+
+// Create models based on the defined schemas
+const MCQ = mongoose.model('MCQ', mcqSchema);
+const TrueFalse = mongoose.model('TrueFalse', trueFalseSchema);
+const ShortAnswer = mongoose.model('ShortAnswer', shortAnswerSchema);
+const Question = mongoose.model('Question', questionSchema);
+
+
+app.post('/saveQuestions', async (req, res) => {
+    try {
+      const { quizTitle, quizType, numQuestions, questions, options, correctAnswers } = req.body;
+  
+      // Check if the required fields are provided
+      if (!quizTitle || !quizType || !numQuestions || !questions || !options || !correctAnswers) {
+        return res.status(400).send('Incomplete data. Please provide all required fields.');
+      }
+  
+      // Create a new question document
+      const question = new Question({
+        quizTitle,
+        quizType,
+        numQuestions,
+        questions,
+        options,
+        correctAnswers,
+      });
+  
+      // Save the question to the database
+      await question.save();
+  
+      res.send('Questions saved successfully!');
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+  
 
 
 app.get("/",(req,res)=>{
@@ -84,9 +200,6 @@ app.get("/adminSignup",(req,res)=>{
     res.render("adminRegister.ejs");
 })
 
-// app.get("/register",(req,res)=>{
-//     res.render("register.ejs");
-// })
 app.get("/aboutus",(req,res)=>{
     res.render("aboutus.ejs");
 })
@@ -94,7 +207,8 @@ app.get("/user-profile",(req,res)=>{
     res.render("user-profile.ejs");
 })
 
-app.post("/register",async (req,res)=>{
+
+app.post("/userRegister",async (req,res)=>{
     try {
         var pass=req.body.password;
         var cpass=req.body.confirmpassword;
@@ -107,28 +221,29 @@ app.post("/register",async (req,res)=>{
          });
      
           newStudent.save();
-          res.redirect("login");
+          res.redirect("userLogin");
         }else{
           await alert("password doesn't match");
-          res.redirect("register.ejs");
+          res.redirect("userRegister");
         }
     } catch (error) {
         res.status(400).send(error);
       }
 })
 
-app.post("/login",async(req,res)=>{
+app.post("/userLogin",async(req,res)=>{
     try {
         const email=req.body.email;
         const password=req.body.password;
         console.log(`${email} , ${password}`);
        const useremail =await Register.findOne({email:email});
        console.log(useremail);
+
        if(useremail.password===password){
         res.render("inside.ejs");
        }else{
         alert("invalid Username or password");
-        res.render("login.ejs")
+        res.render("login.ejs");
        }
     } catch (error) {
         res.status(400).send(error);
@@ -136,34 +251,47 @@ app.post("/login",async(req,res)=>{
 })
 
 
-// const sampleQuestion = {
-//     question_text: "What is the capital of France?",
-//     correct_answer: "Paris",
-//     wrong_answers: ["Berlin", "London", "Madrid"]
-// };
 
-// Question.create(sampleQuestion, (err, question) => {
-//     if (err) {
-//         console.error(err);
-//     } else {
-//         console.log(`Question inserted with the _id: ${question._id}`);
-//     }
-// });
+app.post("/adminRegister",async (req,res)=>{
+    try {
+        var pass=req.body.password;
+        var cpass=req.body.confirmpassword;
+        if(pass===cpass){
+         let newAdmin= new Admin({
+          username:req.body.username,
+          email:req.body.email,
+          password:req.body.password,
+          confirmpassword:req.body.confirmpassword
+         });
+     
+          newAdmin.save();
+          res.redirect("adminLogin");
+        }else{
+          await alert("password doesn't match");
+          res.redirect("userRegister");
+        }
+    } catch (error) {
+        res.status(400).send(error);
+      }
+})
 
-// // Retrieve a random question
-// Question.countDocuments((err, count) => {
-//     const random = Math.floor(Math.random() * count);
-//     Question.findOne().skip(random).exec((err, randomQuestion) => {
-//         if (err) {
-//             console.error(err);
-//         } else {
-//             console.log("Random Question:", randomQuestion);
-//         }
-//     });
-// });
-
-
-
+app.post("/adminLogin",async(req,res)=>{
+    try {
+        const email=req.body.email;
+        const password=req.body.password;
+        console.log(`${email} , ${password}`);
+       const useremail =await Admin.findOne({email:email});
+       console.log(useremail);
+       if(useremail.password===password){
+        res.render("admin-dashboard.ejs");
+       }else{
+        alert("invalid Username or password");
+        res.render("adminLogin.ejs");
+       }
+    } catch (error) {
+        res.status(400).send(error);
+    }
+})
 
 
 
