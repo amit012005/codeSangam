@@ -45,7 +45,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" onclick="scrollToFooter()" ><b>Contact Us</b></a>       
+                <a class="nav-link"  onclick="scrollToFooter()" ><b>Contact Us</b></a>       
               </li>
               
               <li class="nav-item">
@@ -58,7 +58,7 @@
                   <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
                 </svg></button>
                 <div class="login-dropdown">
-                 <button onclick="toggleDropdown('loginDropdown')" class="btn btn-outline-success me-2 btn1 signinbutton" type="button">login</button>
+                 <button onclick="toggleDropdown('loginDropdown')" class="btn btn-outline-success me-2 btn1 signinbutton" type="button"><b>login</b></button>
                  <div id="loginDropdown" class="dropdown-content">
                    <a href="/userLogin" onclick="selectRole('user', 'login')">User</a>
                    <a href="/adminLogin" onclick="selectRole('admin', 'login')">Admin</a>
@@ -90,7 +90,7 @@
             <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3 mid_text">Discover Quiz Adventures with Our Platform</h1>
             <p class="lead">Cultivate your intellect with our diverse collection of quizzes. Explore topics from history to pop culture while enjoying an engaging and educational experience. Challenge your knowledge on our platform today.</p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-              <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 creat_act"><a href="/userSignup" style="text-decoration: none;">Create Account</a></button>
+              <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 creat_act"><a href="/userSignup" style="text-decoration: none; color: rgb(143, 74, 74);" >Create Account</a></button>
               <button type="button" class="btn btn-outline-secondary btn-lg px-4">Demo Quiz</button>
             </div>
           </div>
@@ -192,50 +192,88 @@
 
   <!-- html for footer -->
 
-  <div class="footer-container" id="footer">
-    <footer class="row row-cols-5 py-5 my-5 border-top">
-      <div class="col">
-        <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
-          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-        </a>
-        <p class="text-muted">© 2023</p>
+  <div class="contact-devlop " id="footer">
+    <h2>Contact Developers</h2>
+  </div>
+  
+  <div class="first-footer">
+    <footer>
+      <div class="member">
+        <img src="images/shivanand.jpeg" alt="Member 1" />
+        <h3>Shivanand Pal</h3>
+        <div class="social-links">
+          <a
+            href="https://www.linkedin.com/in/shivanand-pal-787903257/"
+            target="_blank"
+            ><img src="images/linkedin_img.png" alt="LinkedIn"
+          /></a>
+          <a href="https://github.com/shivanandpal91" target="_blank"
+            ><img src="images/github_img.jpg" alt="GitHub"
+          /></a>
+        </div>
       </div>
   
-      <div class="col">
-  
+      <div class="member">
+        <img src="images/aman_chandra.jpg" alt="Member 2" />
+        <h3>Aman Chandra</h3>
+        <div class="social-links">
+          <a
+            href="https://www.linkedin.com/in/aman-chandra-21135a256/"
+            target="_blank"
+            ><img src="images/linkedin_img.png" alt="LinkedIn"
+          /></a>
+          <a href="https://github.com/aman3027" target="_blank"
+            ><img src="images/github_img.jpg" alt="GitHub"
+          /></a>
+        </div>
       </div>
   
-      <div class="col">
-        <h5>Section</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-        </ul>
+      <div class="member">
+        <img src="images/amit.jpg" alt="Member 3" />
+        <h3>Amit Kumar</h3>
+        <div class="social-links">
+          <a
+            href="https://www.linkedin.com/in/amit-kumar-3a4137256/"
+            target="_blank"
+            ><img src="images/linkedin_img.png" alt="LinkedIn"
+          /></a>
+          <a href="https://github.com/amit012005" target="_blank"
+            ><img src="images/github_img.jpg" alt="GitHub"
+          /></a>
+        </div>
       </div>
+    </footer>
+  </div>
   
-      <div class="col">
-        <h5>Section</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-        </ul>
-      </div>
+  <div class="second-footer">
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section about select_three_footer">
+          <h2>About Us</h2>
+          <p>
+            Embark on a journey of knowledge and fun – where every question
+            challenges you and every answer unlocks a world of discovery.
+            Welcome to the Quizz – Where Learning Meets Adventure!
+          </p>
+        </div>
   
-      <div class="col">
-        <h5>Section</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-        </ul>
+        <div
+          class="footer-section contact select_three_footer"
+          style="margin-left: 5rem; margin-right: 6rem">
+        
+          <h2>Contact Us</h2>
+          <p>Email: amanchandra7482@gmail.com</p>
+          <p>Phone: +91 9369426323</p>
+        </div>
+  
+        <div class="footer-section links select_three_footer">
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
       </div>
     </footer>
   </div>

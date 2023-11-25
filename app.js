@@ -300,3 +300,8 @@ app.post("/adminLogin",async(req,res)=>{
 app.listen(port,()=>{
     console.log(`server is running at port ${port}`)
 })
+
+
+
+
+
